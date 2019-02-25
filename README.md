@@ -1,4 +1,4 @@
-# project-09
+# AuthProject
 
 ## Project setup
 ```

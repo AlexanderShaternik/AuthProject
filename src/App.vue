@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app :dark="theme">
+    <app-header @themeChange="themeChange"></app-header>
+    <v-content>
+      <router-view/>
+    </v-content>
+    <app-footer></app-footer>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  // import axios from 'axios'
+  import AppHeader from '@/components/AppHeader'
+  import AppFooter from '@/components/AppFooter'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+      data(){
+          return{
+              error: null,
+              theme: true
+          }
+      },
+      components: {
+          AppHeader,
+          AppFooter
+      },
+      methods:{
+          themeChange () {
+              this.theme = !this.theme
+          }
+      },
+      computed:{
+          // terminals(){
+          //     return this.$store.getters.getTerminals
+          // }
+      }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
